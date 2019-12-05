@@ -18,6 +18,17 @@ DVIDServerService::DVIDServerService(std::string addr_, string user, string app)
             binary, error_msg, DEFAULT);
 }
 
+BinaryDataPtr DVIDServerService::get_server_note()
+{
+	string error_msg;
+	auto result = BinaryData::create_binary_data();
+
+	string endpoint = "/server/note";
+	connection.make_request(endpoint, GET, nullptr, result, error_msg, DEFAULT);
+
+	return result;
+}
+
 std::string DVIDServerService::create_new_repo(std::string alias, std::string description)
 {
     // JSON data to write

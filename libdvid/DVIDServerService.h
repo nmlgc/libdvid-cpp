@@ -37,6 +37,11 @@ class DVIDServerService {
     /*************** API for server services ***********************/
 
     /*!
+     * Returns the value of [server.note] in the server's configuration TOML.
+    */
+	BinaryDataPtr get_server_note();
+
+    /*!
      * Create a new DVID repo with the given alias name
      * and string description.  A DVID UUID is returned.
     */
