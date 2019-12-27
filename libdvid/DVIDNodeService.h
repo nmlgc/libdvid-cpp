@@ -129,7 +129,17 @@ class DVIDNodeService {
 
     /************* API to create datatype instances **************/
     // TODO: pass configuration data.
-    
+
+    /*!
+     * Create an instance of the specified type.
+     * Defaults to 32x32x32 blocks.
+     * \param datatype name of the datatype to create
+     * \param datatype_name name of new datatype instance
+     * \param blocksize size of block chunks (0 if not applicable)
+     * \return true if create, false if already exists
+    */
+    bool create_datatype(std::string datatype, std::string datatype_name, size_t blocksize=DEFBLOCKSIZE);
+
     /*!
      * Create an instance of uint8 grayscale datatype.
      * Defaults to 32x32x32 blocks.
@@ -981,15 +991,6 @@ class DVIDNodeService {
     */
     void put_blocks(std::string datatype_instance, BinaryDataPtr binary,
             int span, std::vector<int> block_coords);
-
-    /*!
-     * Helper function to create an instance of the specified type.
-     * \param datatype name of the datatype to create
-     * \param datatype_name name of new datatype instance
-     * \param blocksize size of block chunks (0 if not applicable)
-     * \return true if create, false if already exists
-    */
-    bool create_datatype(std::string datatype, std::string datatype_name, size_t blocksize=0);
 
     /*!
      * Checks if data exists for the given datatype name.
